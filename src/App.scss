@@ -35,15 +35,21 @@
 
   &__section {
     width: 100%;
+    max-width: calc(100% - 315px);
     min-height: calc(100vh - 50px - 50px);
     padding: 5px;
+
+    transition: 250ms;
+
+    &--fullWidth {
+      max-width: 100%;
+    }
   }
 
   &__sidebar_container {
     display: flex;
     justify-content: end;
-    width: 300px;
-    min-height: 300px;
+    width: 315px;
     overflow-x: hidden;
 
     &--hiding {
@@ -56,7 +62,7 @@
   }
 
   &__sidebar {
-    width: calc(100% - 15px);
+    width: 300px;
     height: 100%;
     padding: 5px;
 
