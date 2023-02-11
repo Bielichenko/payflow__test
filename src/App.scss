@@ -3,37 +3,40 @@
   justify-content: center;
   align-items: start;
 
-  min-width: max-content;
-  max-width: 100vw;
-
   background-color: #eee;
 }
 
 .markup {
-  // position: relative;
   width: 100%;
-  min-width: 500px;
   max-width: 800px;
+
+  @media (max-width: 799px) {
+    min-width: 500px;
+  }
 
   background-color: #fff;
 
   &__header {
     width: 100%;
     height: 50px;
+    padding: 5px;
+
+    border-bottom: 1px solid #999;
   }
 
   &__main {
     display: flex;
+
     height: 100%;
     padding-bottom: 50px;
-    // justify-content: end;
+
+    overflow: hidden;
   }
 
   &__section {
     width: 100%;
     min-height: calc(100vh - 50px - 50px);
-
-    background-color: red;
+    padding: 5px;
   }
 
   &__sidebar_container {
@@ -43,42 +46,19 @@
     min-height: 300px;
     overflow-x: hidden;
 
-    background-color: green;
-
     &--hiding {
-      animation: hiding 0.25s;
-
-      @keyframes hiding {
-        from {
-          opacity: 1;
-        }
-
-        to {
-          opacity: 0;
-          background-color: rgb(13, 243, 98);
-        }
-      }
+      animation: 250ms ease-out hiding;
     }
 
     &--appearing {
-      animation: appearing 0.25s;
-
-      @keyframes appearing {
-        from {
-          opacity: 0;
-        }
-
-        to {
-          opacity: 1;
-          background-color: rgb(13, 243, 98);
-        }
-      }
+      animation: 250ms linear reverse hiding;
     }
   }
 
   &__sidebar {
     width: calc(100% - 15px);
     height: 100%;
+    padding: 5px;
 
     border-left: 1px #ccc solid;
     box-shadow: 0px 0px 15px rgba(51, 51, 51, 0.5);
@@ -94,8 +74,21 @@
     min-width: 500px;
     max-width: 800px;
     height: 50px;
+    padding: 5px;
 
     border-top: 1px solid #999;
     background-color: #fff;
+  }
+}
+
+@keyframes hiding {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(100%);
   }
 }
