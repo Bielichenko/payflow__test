@@ -3,21 +3,25 @@
   justify-content: center;
   align-items: start;
 
+  min-width: min-content;
+  // height: 100vh;
+
   background-color: #eee;
 }
 
 .markup {
   width: 100%;
   max-width: 800px;
+  min-width: 500px;
 
-  @media (max-width: 799px) {
-    min-width: 500px;
-  }
+  // @media (max-width: 799px) {
+  //   min-width: 500px;
+  // }
 
   background-color: #fff;
 
   &__header {
-    width: 100%;
+    // width: 100%;
     height: 50px;
     padding: 5px;
 
@@ -36,10 +40,13 @@
   &__section {
     width: 100%;
     max-width: calc(100% - 315px);
+    // height: 100%;
     min-height: calc(100vh - 50px - 50px);
     padding: 5px;
 
     transition: 250ms;
+
+    background-color: red;
 
     &--fullWidth {
       max-width: 100%;
@@ -49,7 +56,9 @@
   &__sidebar_container {
     display: flex;
     justify-content: end;
+
     width: 315px;
+
     overflow-x: hidden;
 
     &--hiding {
@@ -63,7 +72,7 @@
 
   &__sidebar {
     width: 300px;
-    height: 100%;
+    // height: 100%;
     padding: 5px;
 
     border-left: 1px #ccc solid;
