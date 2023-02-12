@@ -47,21 +47,18 @@ export const App: React.FC = () => {
     }
 
     if (isSideBarCheck === undefined) {
+      console.log('isSideBarCheck === undefined');
       recoverSideBar();
     }
   };
 
   const resizeHandler = () => {
-    const { clientWidth } = ref.current || {};
+    if (window.innerWidth >= 700) {
+      displaySideBar();
+    }
 
-    if (clientWidth) {
-      if (window.innerWidth >= 700) {
-        displaySideBar();
-      }
-
-      if (window.innerWidth < 700) {
-        hideSideBar();
-      }
+    if (window.innerWidth < 700) {
+      hideSideBar();
     }
   };
 
@@ -75,32 +72,36 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="app" ref={ref}>
-      <main className="app__markup markup">
-        <header className="markup__header"></header>
-        <main className="markup__main">
-          <section className={cn(
-            'markup__section',
-            { 'markup__section--fullWidth': !isSBDisplayed },
-          )}
-          >
-          </section>
-          {isSBDisplayed && (
-            <div className={cn(
-              'markup__sidebar_container',
-              {
-                'markup__sidebar_container--hiding': isHiding,
-                'markup__sidebar_container--appearing': isAppearing,
-              },
-            )}
-            >
-              <aside className="markup__sidebar">
-              </aside>
-            </div>
-          )}
-        </main>
-        <footer className="markup__footer"></footer>
-      </main>
-    </div>
+    isSideBarCheck === undefined
+      ? null
+      : (
+        <div className="app" ref={ref}>
+          <main className="app__markup markup">
+            <header className="markup__header">header</header>
+            <main className="markup__main">
+              <section className={cn(
+                'markup__section',
+                { 'markup__section--fullWidth': !isSBDisplayed },
+              )}
+              >
+              </section>
+              {isSBDisplayed && (
+                <div className={cn(
+                  'markup__sidebar_container',
+                  {
+                    'markup__sidebar_container--hiding': isHiding,
+                    'markup__sidebar_container--appearing': isAppearing,
+                  },
+                )}
+                >
+                  <aside className="markup__sidebar">
+                  </aside>
+                </div>
+              )}
+            </main>
+            <footer className="markup__footer">footer</footer>
+          </main>
+        </div>
+      )
   );
 };
