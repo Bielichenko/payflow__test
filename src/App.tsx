@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import './App.scss';
@@ -70,7 +68,7 @@ export const App: React.FC = () => {
       : (
         <div className="app">
           <main className="app__markup markup">
-            <header className="markup__header">header</header>
+            <header className="markup__header"></header>
             <div className="markup__middle_container">
               <main className={cn(
                 'markup__main',
@@ -92,7 +90,7 @@ export const App: React.FC = () => {
                 </div>
               )}
             </div>
-            <footer className="markup__footer">footer</footer>
+            <footer className="markup__footer"></footer>
           </main>
         </div>
       )
